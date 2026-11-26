@@ -13,7 +13,7 @@
   <meta property="og:locale" content="ru_RU">
   
   <!-- Theme & PWA -->
-  <meta name="theme-color" content="#C9A27E">
+  <meta name="theme-color" content="#F8FAFC">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Ейчанка">
@@ -23,7 +23,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -43,7 +43,7 @@
       
       <div class="header__actions">
         <a href="tel:+79615225341" class="btn btn--outline btn--sm" id="btn-call-header">Позвонить</a>
-        <a href="https://t.me/fifengmwt" class="btn btn--telegram btn--sm" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://t.me/fifengmwt" target="_blank" class="btn btn--primary btn--sm" id="btn-book-header">Записаться</a>
       </div>
       
       <!-- Mobile menu toggle -->
@@ -56,6 +56,7 @@
     <nav class="mobile-menu" id="mobile-menu">
       <a href="#services">Услуги</a>
       <a href="#masters">Мастера</a>
+      <a href="#booking">Запись</a>
       <a href="#advantages">Почему мы</a>
       <a href="#reviews">Отзывы</a>
       <a href="#contacts">Контакты</a>
@@ -67,7 +68,7 @@
   </header>
 
   <main>
-    <!-- HERO -->
+    <!-- HERO (Сюда будет встроен 3D-фон) -->
     <section class="hero" id="hero">
       <div class="hero__bg" id="hero-bg"></div>
       <div class="container hero__content">
@@ -78,7 +79,7 @@
         <h1 class="hero__title" id="hero-title">Парикмахерская «Ейчанка» — ваш салон красоты в Ейске</h1>
         <p class="hero__subtitle" id="hero-subtitle">Профессиональные мастера, уютная атмосфера и чашка кофе. Рейтинг 4,6 ★ по 278 отзывам</p>
         <div class="hero__cta">
-          <a href="https://t.me/fifengmwt" target="_blank" class="btn btn--primary btn--lg" id="btn-book-hero">Записаться</a>
+          <a href="#booking" class="btn btn--primary btn--lg" id="btn-book-hero">Записаться</a>
           <a href="tel:+79615225341" class="btn btn--outline btn--lg" id="btn-call-hero">Позвонить</a>
         </div>
       </div>
@@ -99,6 +100,15 @@
         <h2 class="section__title">Наши мастера</h2>
         <p class="section__lead">Профессионалы, которым можно доверить свою красоту</p>
         <div class="masters__grid" id="masters-grid"></div>
+      </div>
+    </section>
+
+    <!-- BOOKING FORM -->
+    <section class="section booking" id="booking">
+      <div class="container">
+        <h2 class="section__title">Запись онлайн</h2>
+        <p class="section__lead">Заполните форму, и мы свяжемся с вами для подтверждения</p>
+        <div id="booking-form-container" class="booking-wrapper"></div>
       </div>
     </section>
 
@@ -173,7 +183,7 @@
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.5!2d38.287!3d46.677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDYuNjc3LDM4LjI4Nw!5e0!3m2!1sru!2sru!4v1700000000000"
               width="100%"
               height="100%"
-              style="border:0; border-radius: 16px;"
+              style="border:0; border-radius: 24px;"
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade">
@@ -213,6 +223,17 @@
     </div>
   </footer>
 
+  <!-- 3D Фон (Three.js) -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+      }
+    }
+  </script>
+  <script type="module" src="bg3d.js"></script>
+  
+  <!-- Твой основной скрипт -->
   <script src="script.js"></script>
 </body>
 </html>
