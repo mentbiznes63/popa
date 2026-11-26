@@ -1,6 +1,7 @@
 /* ============================================
    Ейчанка — Landing Page Styles
    ============================================ */
+
 :root {
   --accent: #C9A27E;
   --accent-dark: #B08D68;
@@ -30,7 +31,7 @@ ul, ol { list-style: none; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 20px; }
 
-/* BUTTONS */
+/* ========== BUTTONS ========== */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; border-radius: 50px; transition: all 0.25s ease; white-space: nowrap; text-align: center; }
 .btn--primary { background: var(--accent); color: #fff; box-shadow: 0 4px 14px rgba(201, 162, 126, 0.35); }
 .btn--primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
@@ -42,7 +43,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .btn--lg { padding: 16px 28px; font-size: 16px; }
 .btn--full { width: 100%; }
 
-/* HEADER */
+/* ========== HEADER ========== */
 .header { position: sticky; top: 0; z-index: 100; background: rgba(250, 247, 242, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); height: var(--header-h); }
 .header__inner { display: flex; align-items: center; justify-content: space-between; height: 100%; gap: 16px; }
 .logo { display: flex; flex-direction: column; line-height: 1.2; }
@@ -63,7 +64,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .mobile-menu a { font-weight: 500; font-size: 1.05rem; padding: 8px 0; }
 .mobile-menu__actions { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
 
-/* HERO */
+/* ========== HERO ========== */
 .hero { position: relative; min-height: 72vh; display: flex; align-items: center; padding: 60px 0 80px; overflow: hidden; }
 .hero__bg { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(250, 247, 242, 0.92) 0%, rgba(250, 247, 242, 0.75) 50%, rgba(250, 247, 242, 0.55) 100%); z-index: 0; background-size: cover !important; background-position: center !important; }
 .hero__content { position: relative; z-index: 1; max-width: 640px; }
@@ -73,12 +74,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero__subtitle { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 32px; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; }
 
-/* SECTIONS */
+/* ========== SECTIONS ========== */
 .section { padding: 72px 0; }
 .section__title { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 700; text-align: center; margin-bottom: 12px; }
 .section__lead { text-align: center; color: var(--text-muted); margin-bottom: 40px; max-width: 480px; margin-left: auto; margin-right: auto; }
 
-/* SERVICES */
+/* ========== SERVICES ========== */
 .services__grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
 .service-card { background: var(--bg-card); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); border: 1px solid var(--border); transition: transform 0.25s; opacity: 0; transform: translateY(20px); }
 .service-card.visible { opacity: 1; transform: translateY(0); }
@@ -87,17 +88,84 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .service-card__price { color: var(--accent-dark); font-weight: 700; font-size: 1.15rem; margin-bottom: 8px; }
 .service-card__desc { font-size: 0.9rem; color: var(--text-muted); }
 
-/* MASTERS */
+/* ========== MASTERS ========== */
 .masters__grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
 .master-card { background: var(--bg-card); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); text-align: center; opacity: 0; transform: translateY(20px); transition: all 0.3s; }
 .master-card.visible { opacity: 1; transform: translateY(0); }
 .master-card:hover { transform: translateY(-4px); }
-.master-card__img { width: 100%; height: 280px; object-fit: cover; background-color: #f0f0f0; }
+
+/* Измененный стиль для фото мастеров (уменьшено в 2 раза, без обрезки) */
+.master-card__img {
+  width: 50%;             
+  height: auto;           
+  object-fit: contain;    
+  display: block;
+  margin: 20px auto;      
+  background-color: #FAF7F2; 
+}
+
 .master-card__info { padding: 20px; }
 .master-card__name { font-size: 1.2rem; font-weight: 600; margin-bottom: 6px; }
 .master-card__details { font-size: 0.9rem; color: var(--text-muted); }
 
-/* ADVANTAGES */
+/* ========== BOOKING FORM ========== */
+.booking-wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 1rem;
+  background: var(--bg);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--accent);
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+/* ========== ADVANTAGES ========== */
 .advantages { background: linear-gradient(180deg, var(--bg) 0%, #F3EDE4 100%); }
 .advantages__grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
 .advantage-item { display: flex; align-items: flex-start; gap: 16px; background: var(--bg-card); padding: 22px; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--border); opacity: 0; transform: translateY(16px); transition: all 0.4s; }
@@ -105,7 +173,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .advantage-item__icon { flex-shrink: 0; width: 44px; height: 44px; background: var(--accent-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
 .advantage-item__text { font-weight: 500; font-size: 1.05rem; padding-top: 8px; }
 
-/* REVIEWS */
+/* ========== REVIEWS ========== */
 .reviews__grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
 .review-card { background: var(--bg-card); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); border: 1px solid var(--border); opacity: 0; transform: translateY(16px); transition: all 0.4s; }
 .review-card.visible { opacity: 1; transform: translateY(0); }
@@ -113,7 +181,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .review-card__text { font-size: 1rem; margin-bottom: 16px; }
 .review-card__author { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
 
-/* CONTACTS */
+/* ========== CONTACTS ========== */
 .contacts__wrapper { display: grid; grid-template-columns: 1fr; gap: 32px; }
 .contacts__info { display: flex; flex-direction: column; gap: 16px; }
 .contact-card { display: flex; gap: 16px; background: var(--bg-card); padding: 20px; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow); }
@@ -123,7 +191,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .contact-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
 .contacts__map { height: 320px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); }
 
-/* PWA */
+/* ========== PWA ========== */
 .pwa-section { padding-top: 0; }
 .pwa-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; background: var(--bg-card); padding: 32px 24px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); }
 .pwa-card__icon { font-size: 2.5rem; }
@@ -131,13 +199,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .pwa-card p { color: var(--text-muted); margin-bottom: 12px; }
 .pwa-instructions { margin-top: 16px; font-size: 0.9rem; color: var(--text-muted); text-align: left; }
 
-/* FOOTER */
+/* ========== FOOTER ========== */
 .footer { padding: 32px 0; border-top: 1px solid var(--border); background: #F3EDE4; }
 .footer__inner { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
 .footer__brand .logo__name { font-size: 1.2rem; }
 .footer__copy { font-size: 0.85rem; color: var(--text-muted); }
 
-/* RESPONSIVE */
+/* ========== RESPONSIVE ========== */
 @media (min-width: 600px) {
   .services__grid { grid-template-columns: repeat(2, 1fr); }
   .masters__grid { grid-template-columns: repeat(2, 1fr); }
