@@ -127,4 +127,35 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .pwa-section { padding-top: 0; }
 .pwa-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; background: var(--bg-card); padding: 32px 24px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); }
 .pwa-card__icon { font-size: 2.5rem; }
-.pwa-card
+.pwa-card h3 { font-size: 1.25rem; margin-bottom: 6px; }
+.pwa-card p { color: var(--text-muted); margin-bottom: 12px; }
+.pwa-instructions { margin-top: 16px; font-size: 0.9rem; color: var(--text-muted); text-align: left; }
+
+/* FOOTER */
+.footer { padding: 32px 0; border-top: 1px solid var(--border); background: #F3EDE4; }
+.footer__inner { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+.footer__brand .logo__name { font-size: 1.2rem; }
+.footer__copy { font-size: 0.85rem; color: var(--text-muted); }
+
+/* RESPONSIVE */
+@media (min-width: 600px) {
+  .services__grid { grid-template-columns: repeat(2, 1fr); }
+  .masters__grid { grid-template-columns: repeat(2, 1fr); }
+  .advantages__grid { grid-template-columns: repeat(2, 1fr); }
+  .reviews__grid { grid-template-columns: repeat(2, 1fr); }
+  .pwa-card { flex-direction: row; text-align: left; padding: 28px 32px; }
+}
+
+@media (min-width: 768px) {
+  .header__info, .header__actions { display: flex; }
+  .burger { display: none; }
+  .mobile-menu { display: none !important; }
+  .contacts__wrapper { grid-template-columns: 1fr 1fr; align-items: stretch; }
+  .contacts__map { height: auto; min-height: 380px; }
+}
+
+@media (min-width: 900px) {
+  .services__grid { grid-template-columns: repeat(3, 1fr); }
+  .masters__grid { grid-template-columns: repeat(3, 1fr); }
+  .reviews__grid { grid-template-columns: repeat(3, 1fr); }
+}
