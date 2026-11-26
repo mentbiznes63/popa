@@ -26,6 +26,9 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Фоновые летающие частицы для всего сайта -->
+  <div id="particles-bg"></div>
+
   <!-- HEADER (Glassmorphism) -->
   <header class="header" id="header">
     <div class="container header__inner">
@@ -41,7 +44,7 @@
       
       <div class="header__actions">
         <a href="tel:+79615225341" class="btn btn--outline btn--sm" id="btn-call-header">Позвонить</a>
-        <a href="https://calendar.app.google/DScm5Xt4n4EGfuN58" target="_blank" class="btn btn--primary btn--sm" id="btn-book-header">Записаться</a>
+        <a href="#booking" class="btn btn--primary btn--sm" id="btn-book-header">Записаться</a>
       </div>
       
       <button class="burger" id="burger" aria-label="Меню">
@@ -86,8 +89,8 @@
     <!-- SERVICES -->
     <section class="section services" id="services">
       <div class="container">
-        <h2 class="section__title">Услуги и цены</h2>
-        <p class="section__lead">Актуальные цены уточняйте при записи — зависят от длины и сложности</p>
+        <h2 class="section__title reveal">Услуги и цены</h2>
+        <p class="section__lead reveal">Актуальные цены уточняйте при записи — зависят от длины и сложности</p>
         <div class="services__grid" id="services-grid"></div>
       </div>
     </section>
@@ -95,25 +98,38 @@
     <!-- MASTERS -->
     <section class="section masters" id="masters">
       <div class="container">
-        <h2 class="section__title">Наши мастера</h2>
-        <p class="section__lead">Профессионалы, которым можно доверить свою красоту</p>
+        <h2 class="section__title reveal">Наши мастера</h2>
+        <p class="section__lead reveal">Профессионалы, которым можно доверить свою красоту</p>
         <div class="masters__grid" id="masters-grid"></div>
       </div>
     </section>
 
-    <!-- BOOKING FORM -->
+    <!-- BOOKING FORM (Виджет Яндекс/Google Календаря) -->
     <section class="section booking" id="booking">
       <div class="container">
-        <h2 class="section__title">Запись онлайн</h2>
-        <p class="section__lead">Заполните форму, и мы свяжемся с вами для подтверждения</p>
-        <div id="booking-form-container" class="booking-wrapper"></div>
+        <h2 class="section__title reveal">Запись онлайн</h2>
+        <p class="section__lead reveal">Выберите свободное время и оставьте свои данные</p>
+        
+        <div class="booking-wrapper reveal" style="padding: 0; overflow: hidden; height: 700px; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-xl); border: 1px solid var(--border);">
+          
+          <!-- ВСТАВЬ СВОЮ ССЫЛКУ ИЗ GOOGLE КАЛЕНДАРЯ СЮДА ↓ -->
+          <iframe 
+            src="https://calendar.app.google/DScm5Xt4n4EGfuN58"
+            width="100%" 
+            height="100%" 
+            frameborder="0" 
+            style="border: none;">
+          </iframe>
+          <!-- КОНЕЦ ВСТАВКИ -->
+
+        </div>
       </div>
     </section>
 
     <!-- ADVANTAGES -->
     <section class="section advantages" id="advantages">
       <div class="container">
-        <h2 class="section__title">Почему нас выбирают</h2>
+        <h2 class="section__title reveal">Почему нас выбирают</h2>
         <div class="advantages__grid" id="advantages-grid"></div>
       </div>
     </section>
@@ -121,7 +137,7 @@
     <!-- REVIEWS -->
     <section class="section reviews" id="reviews">
       <div class="container">
-        <h2 class="section__title">Отзывы гостей</h2>
+        <h2 class="section__title reveal">Отзывы гостей</h2>
         <div class="reviews__grid" id="reviews-grid"></div>
       </div>
     </section>
@@ -129,31 +145,31 @@
     <!-- CONTACTS -->
     <section class="section contacts" id="contacts">
       <div class="container">
-        <h2 class="section__title">Контакты и запись</h2>
+        <h2 class="section__title reveal">Контакты и запись</h2>
         <div class="contacts__wrapper">
           <div class="contacts__info">
-            <div class="contact-card">
+            <div class="contact-card reveal">
               <div class="contact-card__icon">📍</div>
               <div>
                 <h3>Адрес</h3>
                 <p id="contact-address">г. Ейск, ул. Красная, 55</p>
               </div>
             </div>
-            <div class="contact-card">
+            <div class="contact-card reveal">
               <div class="contact-card__icon">📞</div>
               <div>
                 <h3>Телефон</h3>
                 <a href="tel:+79615225341" id="contact-phone">+7 (961) 522-53-41</a>
               </div>
             </div>
-            <div class="contact-card">
+            <div class="contact-card reveal">
               <div class="contact-card__icon">🕒</div>
               <div>
                 <h3>Часы работы</h3>
                 <p id="contact-hours">Ежедневно 09:00–19:00</p>
               </div>
             </div>
-            <div class="contact-card">
+            <div class="contact-card reveal">
               <div class="contact-card__icon">💬</div>
               <div>
                 <h3>Запись онлайн</h3>
@@ -163,10 +179,10 @@
                 </div>
               </div>
             </div>
-            <a href="https://www.google.com/maps/dir/?api=1&destination=Ейск,+ул.+Красная,+55" class="btn btn--primary btn--lg btn--full" target="_blank" rel="noopener">Построить маршрут</a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Ейск,+ул.+Красная,+55" class="btn btn--primary btn--lg btn--full reveal" target="_blank" rel="noopener">Построить маршрут</a>
           </div>
           
-          <div class="contacts__map">
+          <div class="contacts__map reveal">
             <iframe
               id="map-iframe"
               title="Карта парикмахерской Ейчанка"
