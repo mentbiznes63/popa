@@ -94,14 +94,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .master-card.visible { opacity: 1; transform: translateY(0); }
 .master-card:hover { transform: translateY(-4px); }
 
-/* Измененный стиль для фото мастеров (уменьшено в 2 раза, без обрезки) */
+/* Стиль для одинаковых, уменьшенных фотографий */
 .master-card__img {
-  width: 50%;             
-  height: auto;           
-  object-fit: contain;    
+  width: 120px;            
+  height: 120px;           
+  border-radius: 50%;      
+  object-fit: cover;       
   display: block;
-  margin: 20px auto;      
-  background-color: #FAF7F2; 
+  margin: 30px auto 10px;  
+  background-color: #FAF7F2;
+  border: 2px solid var(--accent-light);
 }
 
 .master-card__info { padding: 20px; }
