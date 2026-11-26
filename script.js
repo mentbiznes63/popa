@@ -10,7 +10,7 @@ const CONFIG = {
   phone: "+7 (961) 522-53-41",
   phoneTel: "+79615225341",
   whatsapp: "https://wa.me/79615225341",
-  telegram: "https://t.me/salon_eychanka1",
+  telegram: "https://t.me/fifengmwt",
   workHours: "Ежедневно 09:00–19:00",
   rating: "4,6",
   reviewsCount: 278,
@@ -28,9 +28,9 @@ const CONFIG = {
 
   // МАСТЕРА (меняй имена, возраст, стаж и названия файлов с фото)
   masters: [
-    { name: "Алёна", age: 28, experience: "5 лет", photo: "" },
-    { name: "Олеся", age: 34, experience: "10 лет", photo: "" },
-    { name: "Екатерина", age: 25, experience: "3 года", photo: "" }
+    { name: "Саша Пэтрик", age: 18, experience: "умеет стрич нохти", photo: "sashapetros.jpg" },
+    { name: "Добрынза", age: 99, experience: "не умеет стрич нохти", photo: "dobrinza.jpg" },
+    { name: "Владька шеф", age: 18, experience: "чучуть умеет стрич нохти", photo: "vladka.jpg" }
   ],
   
   advantages: [
