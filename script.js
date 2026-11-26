@@ -1,5 +1,5 @@
 /* ============================================
-   Ейчанка — Главный скрипт
+   Ейчанка — Главный скрипт (С анимациями)
    ============================================ */
 
 const CONFIG = {
@@ -15,14 +15,13 @@ const CONFIG = {
   rating: "4,6",
   reviewsCount: 278,
   
-  // Массив фоновых фотографий (будут меняться)
   heroImages: [
     "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1920&q=80",
     "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1920&q=80",
     "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1920&q=80"
   ],
   
-   services: [
+    services: [
     { name: "Стрижка женская", price: "от 999 ₽", description: "Модельная стрижка как у раналда" },
     { name: "Стрижка мужская", price: "от 200 ₽", description: "Под горшочек" },
     { name: "Стрижка детская", price: "от 67 ₽", description: "Z" },
@@ -60,8 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
   renderAdvantages();
   renderReviews();
   setupMobileMenu();
+  setupScrollReveal(); // Запуск анимаций появления
   setupPWA();
-  init3DBackground(); // Запуск 3D
+  init3DBackground();
+  initParticles(); // Запуск летающих частиц на фоне
   
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -91,16 +92,11 @@ function applyConfig() {
   if (contactPhone) { contactPhone.textContent = CONFIG.phone; contactPhone.href = `tel:${CONFIG.phoneTel}`; }
 }
 
-// Слайдер фоновых фото
 function startHeroSlider() {
   const slider = document.getElementById('hero-slider');
   if (!slider || !CONFIG.heroImages.length) return;
   let currentIndex = 0;
-  
-  // Устанавливаем первый фон
   slider.style.backgroundImage = `url('${CONFIG.heroImages[0]}')`;
-  
-  // Меняем каждые 5 секунд
   setInterval(() => {
     currentIndex = (currentIndex + 1) % CONFIG.heroImages.length;
     slider.style.backgroundImage = `url('${CONFIG.heroImages[currentIndex]}')`;
@@ -137,10 +133,8 @@ function renderMasters() {
 function renderBookingForm() {
   const container = document.getElementById('booking-form-container');
   if (!container) return;
-
   const servicesOptions = CONFIG.services.map(s => `<option value="${s.name}">${s.name} (${s.price})</option>`).join("");
   const mastersOptions = CONFIG.masters.map(m => `<option value="${m.name}">${m.name}</option>`).join("");
-
   container.innerHTML = `
     <form id="booking-form" class="booking-form">
       <div class="form-group">
@@ -174,7 +168,6 @@ function renderBookingForm() {
       <button type="submit" class="btn btn--primary btn--full" style="margin-top: 10px;">Записаться в Telegram</button>
     </form>
   `;
-
   const form = document.getElementById("booking-form");
   if (form) {
     form.addEventListener("submit", (e) => {
@@ -184,7 +177,6 @@ function renderBookingForm() {
       const master = document.getElementById("book-master").value;
       const date = document.getElementById("book-date").value;
       const time = document.getElementById("book-time").value;
-
       const text = `Здравствуйте! Хочу записаться.%0A%0A👤 Имя: ${name}%0A✂️ Услуга: ${service}%0A💇‍♀️ Мастер: ${master}%0A📅 Дата: ${date}%0A⏰ Время: ${time}`;
       const tgUser = CONFIG.telegram.replace("https://t.me/", "").replace("@", "");
       window.open(`https://t.me/${tgUser}?text=${text}`, "_blank");
@@ -231,9 +223,93 @@ function setupPWA() {
   }
 }
 
-/* ============================================
-   3D Фон (Three.js)
-   ============================================ */
+/* === 1. АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ === */
+function setupScrollReveal() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible', 'active');
+        observer.unobserve(entry.target); // Анимируем только один раз
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  });
+
+  // Наблюдаем за всеми элементами, которым нужен эффект
+  document.querySelectorAll('.service-card, .master-card, .advantage-item, .review-card, .reveal').forEach(el => {
+    observer.observe(el);
+  });
+}
+
+/* === 2. ФОНОВЫЕ ЧАСТИЦЫ (Живой фон) === */
+function initParticles() {
+  if (typeof THREE === 'undefined') return;
+  const container = document.getElementById('particles-bg');
+  if (!container) return;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  container.appendChild(renderer.domElement);
+
+  // Создаем 100 летающих точек
+  const particlesGeo = new THREE.BufferGeometry();
+  const particlesCount = 100;
+  const posArray = new Float32Array(particlesCount * 3);
+
+  for(let i = 0; i < particlesCount * 3; i++) {
+    posArray[i] = (Math.random() - 0.5) * 30;
+  }
+  particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+  
+  const particlesMat = new THREE.PointsMaterial({
+    size: 0.05,
+    color: 0x4F46E5,
+    transparent: true,
+    opacity: 0.4
+  });
+
+  const particlesMesh = new THREE.Points(particlesGeo, particlesMat);
+  scene.add(particlesMesh);
+
+  let mouseX = 0;
+  let mouseY = 0;
+  document.addEventListener('mousemove', (e) => {
+    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  const clock = new THREE.Clock();
+  function animate() {
+    requestAnimationFrame(animate);
+    const elapsedTime = clock.getElapsedTime();
+    
+    // Вращение всей системы частиц
+    particlesMesh.rotation.y = elapsedTime * 0.05;
+    particlesMesh.rotation.x = elapsedTime * 0.02;
+
+    // Легкий параллакс от мыши
+    camera.position.x += (mouseX * 2 - camera.position.x) * 0.02;
+    camera.position.y += (-mouseY * 2 - camera.position.y) * 0.02;
+    camera.lookAt(scene.position);
+
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+}
+
+/* === 3. 3D НОЖНИЦЫ НА ГЛАВНОМ ЭКРАНЕ === */
 function init3DBackground() {
   const hero = document.getElementById('hero');
   if (!hero || typeof THREE === 'undefined') return;
@@ -244,7 +320,7 @@ function init3DBackground() {
   canvas.style.left = '0';
   canvas.style.width = '100%';
   canvas.style.height = '100%';
-  canvas.style.zIndex = '2'; // Поверх картинки, но под текстом (текст z-index: 10)
+  canvas.style.zIndex = '2';
   canvas.style.pointerEvents = 'none';
   hero.appendChild(canvas);
 
