@@ -5,14 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Парикмахерская Ейчанка на Красной — Ейск | Стрижки, окрашивание</title>
   <meta name="description" content="Парикмахерская «Ейчанка» на Красной в Ейске. Профессиональные мастера, уютная атмосфера, чай и кофе. Стрижки, окрашивание, укладки. Рейтинг 4,6 ★. Ежедневно 09:00–19:00.">
-  <meta name="keywords" content="парикмахерская Ейск, Ейчанка, стрижка Ейск, окрашивание волос Ейск, салон красоты Красная">
   
   <!-- Open Graph -->
   <meta property="og:title" content="Парикмахерская «Ейчанка» на Красной — Ейск">
   <meta property="og:description" content="Профессиональные мастера, уютная атмосфера и чашка кофе. Рейтинг 4,6 ★. Запишитесь онлайн или по телефону.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200">
   
   <!-- Theme & PWA -->
   <meta name="theme-color" content="#C9A27E">
@@ -45,7 +43,7 @@
       
       <div class="header__actions">
         <a href="tel:+79615225341" class="btn btn--outline btn--sm" id="btn-call-header">Позвонить</a>
-        <a href="#contacts" class="btn btn--primary btn--sm" id="btn-book-header">Записаться</a>
+        <a href="https://t.me/salon_eychanka1" target="_blank" class="btn btn--primary btn--sm" id="btn-book-header">Записаться</a>
       </div>
       
       <!-- Mobile menu toggle -->
@@ -57,12 +55,13 @@
     <!-- Mobile menu -->
     <nav class="mobile-menu" id="mobile-menu">
       <a href="#services">Услуги</a>
+      <a href="#masters">Мастера</a>
       <a href="#advantages">Почему мы</a>
       <a href="#reviews">Отзывы</a>
       <a href="#contacts">Контакты</a>
       <div class="mobile-menu__actions">
         <a href="tel:+79615225341" class="btn btn--outline" id="btn-call-mobile">Позвонить</a>
-        <a href="#contacts" class="btn btn--primary" id="btn-book-mobile">Записаться</a>
+        <a href="https://t.me/salon_eychanka1" target="_blank" class="btn btn--primary" id="btn-book-mobile">Записаться</a>
       </div>
     </nav>
   </header>
@@ -79,7 +78,7 @@
         <h1 class="hero__title" id="hero-title">Парикмахерская «Ейчанка» — ваш салон красоты в Ейске</h1>
         <p class="hero__subtitle" id="hero-subtitle">Профессиональные мастера, уютная атмосфера и чашка кофе. Рейтинг 4,6 ★ по 278 отзывам</p>
         <div class="hero__cta">
-          <a href="#contacts" class="btn btn--primary btn--lg" id="btn-book-hero">Записаться</a>
+          <a href="https://t.me/salon_eychanka1" target="_blank" class="btn btn--primary btn--lg" id="btn-book-hero">Записаться</a>
           <a href="tel:+79615225341" class="btn btn--outline btn--lg" id="btn-call-hero">Позвонить</a>
         </div>
       </div>
@@ -90,9 +89,16 @@
       <div class="container">
         <h2 class="section__title">Услуги и цены</h2>
         <p class="section__lead">Актуальные цены уточняйте при записи — зависят от длины и сложности</p>
-        <div class="services__grid" id="services-grid">
-          <!-- Cards rendered from CONFIG -->
-        </div>
+        <div class="services__grid" id="services-grid"></div>
+      </div>
+    </section>
+
+    <!-- MASTERS -->
+    <section class="section masters" id="masters">
+      <div class="container">
+        <h2 class="section__title">Наши мастера</h2>
+        <p class="section__lead">Профессионалы, которым можно доверить свою красоту</p>
+        <div class="masters__grid" id="masters-grid"></div>
       </div>
     </section>
 
@@ -100,9 +106,7 @@
     <section class="section advantages" id="advantages">
       <div class="container">
         <h2 class="section__title">Почему нас выбирают</h2>
-        <div class="advantages__grid" id="advantages-grid">
-          <!-- Items from CONFIG -->
-        </div>
+        <div class="advantages__grid" id="advantages-grid"></div>
       </div>
     </section>
 
@@ -111,9 +115,7 @@
       <div class="container">
         <h2 class="section__title">Отзывы гостей</h2>
         <p class="section__lead">Что говорят о нас в Google</p>
-        <div class="reviews__grid" id="reviews-grid">
-          <!-- Cards from CONFIG -->
-        </div>
+        <div class="reviews__grid" id="reviews-grid"></div>
       </div>
     </section>
 
@@ -153,14 +155,13 @@
               <div>
                 <h3>Запись онлайн</h3>
                 <div class="contact-links">
-                  <a href="#" class="btn btn--whatsapp btn--sm" id="btn-whatsapp" target="_blank" rel="noopener">WhatsApp</a>
-                  <a href="#" class="btn btn--telegram btn--sm" id="btn-telegram" target="_blank" rel="noopener">Telegram</a>
-                  <a href="#" class="btn btn--outline btn--sm" id="btn-yclients" target="_blank" rel="noopener">Онлайн-запись</a>
+                  <a href="https://wa.me/79615225341" class="btn btn--whatsapp btn--sm" target="_blank" rel="noopener">WhatsApp</a>
+                  <a href="https://t.me/salon_eychanka1" class="btn btn--telegram btn--sm" target="_blank" rel="noopener">Telegram</a>
                 </div>
               </div>
             </div>
             
-            <a href="#" class="btn btn--primary btn--lg btn--full" id="btn-route" target="_blank" rel="noopener">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Ейск,+ул.+Красная,+55" class="btn btn--primary btn--lg btn--full" target="_blank" rel="noopener">
               Построить маршрут
             </a>
           </div>
@@ -191,9 +192,9 @@
             <h3>Добавить на главный экран</h3>
             <p>Сайт работает как приложение: быстрый доступ, офлайн-режим и удобные кнопки.</p>
             <button class="btn btn--primary" id="btn-install">Добавить на главный экран</button>
-            <div class="pwa-instructions" id="pwa-instructions">
+            <div class="pwa-instructions" id="pwa-instructions" style="display:none;">
               <p><strong>На iPhone:</strong> нажмите «Поделиться» → «На экран „Домой“»</p>
-              <p><strong>На Android:</strong> меню браузера → «Установить приложение» или «Добавить на главный экран»</p>
+              <p><strong>На Android:</strong> меню браузера → «Установить приложение»</p>
             </div>
           </div>
         </div>
