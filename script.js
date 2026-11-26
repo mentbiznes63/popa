@@ -10,12 +10,12 @@ const CONFIG = {
   phone: "+7 (961) 522-53-41",
   phoneTel: "+79615225341",
   whatsapp: "",
-  telegram: "https://t.me/fifengmwt",
+  telegram: "fifengmwt", // <--- ВАЖНО: твой никнейм БЕЗ https://t.me/
   workHours: "Ежедневно 09:00–19:00",
   rating: "4,6",
   reviewsCount: 278,
   
-  heroImage: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1600&q=80",
+  heroImage: "vladka.jpg",
   
   services: [
     { name: "Стрижка женская", price: "от 800 ₽", description: "Модельная стрижка с мытьём и укладкой" },
@@ -26,14 +26,14 @@ const CONFIG = {
     { name: "Укладка / завивка", price: "от 600 ₽", description: "Праздничная укладка или повседневная" }
   ],
 
-  // МАСТЕРА (меняй имена, возраст, стаж и названия файлов с фото)
+  // МАСТЕРА (можешь менять имена, возраст, стаж и названия фото)
   masters: [
     { name: "Саша Пэтрик", age: 18, experience: "умеет стрич нохти", photo: "sashapetros.jpg" },
-    { name: "Добрынза", age: 99, experience: "не умеет стрич нохти", photo: "dobrinza.jpg" },
-    { name: "Владька шеф", age: 18, experience: "чучуть умеет стрич нохти", photo: "vladka.jpg" }
+    { name: "Добрынза", age: 6, experience: "не умеет стрич нохти", photo: "dobrinza.jpg" },
+    { name: "Владька шеф", age: 18, experience: "чуть чуть умеет стрич нохти", photo: "vladka.jpg" }
   ],
   
- advantages: [
+  advantages: [
     { icon: "👩‍🎨", text: "Опытные мастера — знатоки своего дела" },
     { icon: "🎨", text: "Всегда в наличии нужная краска для обновления цвета" },
     { icon: "☕", text: "Уютная атмосфера и чай или кофе для гостей" },
@@ -263,5 +263,4 @@ function setupPWA() {
       }
     });
   }
-}
 }
