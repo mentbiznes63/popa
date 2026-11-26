@@ -1,5 +1,5 @@
 /* Service Worker — базовое кэширование для PWA */
-const CACHE_NAME = 'eychanka-v3';
+const CACHE_NAME = 'eychanka-v4';
 const ASSETS = [
   './',
   './index.html',
