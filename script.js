@@ -9,21 +9,19 @@ const CONFIG = {
   address: "г. Ейск, ул. Красная, 55",
   phone: "+7 (961) 522-53-41",
   phoneTel: "+79615225341",
-  whatsapp: "",
-  telegram: "fifengmwt", // <--- ВАЖНО: твой никнейм БЕЗ https://t.me/
+  whatsapp: "https://wa.me/79615225341",
+  telegram: "fifengmwt", // Твой аккаунт
   workHours: "Ежедневно 09:00–19:00",
   rating: "4,6",
   reviewsCount: 278,
   
-  heroImage: "vladka.jpg",
+  heroImage: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1600&q=80",
   
   services: [
     { name: "Стрижка женская", price: "от 800 ₽", description: "Модельная стрижка с мытьём и укладкой" },
     { name: "Стрижка мужская", price: "от 500 ₽", description: "Классическая или современная стрижка" },
     { name: "Стрижка детская", price: "от 450 ₽", description: "Бережно и с заботой о маленьких гостях" },
-    { name: "Окрашивание волос", price: "от 1500 ₽", description: "В один тон или сложные техники" },
-    { name: "Мелирование", price: "от 2000 ₽", description: "Классическое и креативное мелирование" },
-    { name: "Укладка / завивка", price: "от 600 ₽", description: "Праздничная укладка или повседневная" }
+    { name: "Окрашивание волос", price: "от 1500 ₽", description: "В один тон или сложные техники" }
   ],
 
   // МАСТЕРА (можешь менять имена, возраст, стаж и названия фото)
@@ -42,24 +40,48 @@ const CONFIG = {
   ],
   
   reviews: [
-    { text: "Не плохой салон, вежливые мастера, предлагают чай или кофе. Приятно возвращаться.", author: "Гость Google" },
-    { text: "Спасибо за профессионализм, приятный, вежливый коллектив. Приятно от посещения.", author: "Гость Google" },
-    { text: "Впервые побывала в салоне Ейчанка. Приятная атмосфера, вежливые сотрудники, профессиональные мастера.", author: "Гость Google" }
+    { text: "Отличный салон, вежливые мастера.", author: "Гость Google" },
+    { text: "Спасибо за профессионализм!", author: "Гость Google" },
+    { text: "Приятная атмосфера, профессиональные мастера.", author: "Гость Google" }
   ]
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  applyConfig();
-  renderServices();
-  renderMasters();
-  renderBookingForm(); // <-- Добавили рендер формы
-  renderAdvantages();
-  renderReviews();
-  setupMobileMenu();
-  setupScrollAnimations();
-  setupPWA();
-  document.getElementById('year').textContent = new Date().getFullYear();
+  try { applyConfig(); } catch(e) { console.log(e); }
+  try { renderServices(); } catch(e) { console.log(e); }
+  try { renderMasters(); } catch(e) { console.log(e); }
+  try { renderBookingForm(); } catch(e) { console.log(e); } // Форма
+  try { renderAdvantages(); } catch(e) { console.log(e); }
+  try { renderReviews(); } catch(e) { console.log(e); }
+  try { setupMobileMenu(); } catch(e) { console.log(e); }
+  try { setupScrollAnimations(); } catch(e) { console.log(e); }
+  try { setupPWA(); } catch(e) { console.log(e); }
+  
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 });
+
+// Умный поиск блока: находит заголовок и создает под ним контейнер
+function getOrCreateContainer(titleText, tag = 'div', className = 'dynamic-container') {
+  const headings = Array.from(document.querySelectorAll('h2, h3'));
+  // Ищем заголовок по тексту
+  const targetHeading = headings.find(h => h.textContent.trim().toLowerCase().includes(titleText.toLowerCase()));
+  if (!targetHeading) return null;
+
+  let container = targetHeading.nextElementSibling;
+  // Если контейнера нет, создаем его
+  if (!container || !container.classList.contains(className)) {
+    container = document.createElement(tag);
+    container.className = className;
+    targetHeading.parentNode.insertBefore(container, targetHeading.nextSibling);
+  }
+  return container;
+}
+
+function setText(id, text) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = text;
+}
 
 function applyConfig() {
   setText('logo-name', CONFIG.siteName);
@@ -85,13 +107,8 @@ function applyConfig() {
   if (contactPhone) { contactPhone.textContent = CONFIG.phone; contactPhone.href = `tel:${CONFIG.phoneTel}`; }
 }
 
-function setText(id, text) {
-  const el = document.getElementById(id);
-  if (el) el.textContent = text;
-}
-
 function renderServices() {
-  const grid = document.getElementById('services-grid');
+  const grid = getOrCreateContainer("Услуги и цены", "div", "services-grid");
   if (!grid) return;
   grid.innerHTML = CONFIG.services.map(s => `
     <article class="service-card">
@@ -103,9 +120,11 @@ function renderServices() {
 }
 
 function renderMasters() {
-  const grid = document.getElementById('masters-grid');
+  const grid = getOrCreateContainer("Наши мастера", "div", "masters-grid");
   if (!grid) return;
+  
   const defaultPhoto = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect width='100' height='100' fill='%23E8D5C0'/%3E%3Ctext x='50' y='55' font-size='40' text-anchor='middle' fill='%23FFFFFF' font-family='Arial'%3E👤%3C/text%3E%3C/svg%3E";
+  
   grid.innerHTML = CONFIG.masters.map(m => `
     <article class="master-card">
       <img src="${m.photo || defaultPhoto}" alt="${escapeHtml(m.name)}" class="master-card__img">
@@ -117,42 +136,41 @@ function renderMasters() {
   `).join('');
 }
 
-// НОВОЕ: Форма записи
 function renderBookingForm() {
-  const container = document.getElementById('booking-form-container');
+  const container = getOrCreateContainer("Запись онлайн", "div", "booking-wrapper");
   if (!container) return;
 
   const servicesOptions = CONFIG.services.map(s => `<option value="${s.name}">${s.name} (${s.price})</option>`).join("");
   const mastersOptions = CONFIG.masters.map(m => `<option value="${m.name}">${m.name}</option>`).join("");
 
   container.innerHTML = `
-    <form id="booking-form" class="booking-form">
-      <div class="form-group">
-        <label>Ваше имя</label>
-        <input type="text" id="book-name" required placeholder="Как к вам обращаться?">
+    <form id="booking-form" class="booking-form" style="max-width:500px; margin:0 auto; background:#fff; padding:30px; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.06); display:flex; flex-direction:column; gap:16px;">
+      <div style="display:flex; flex-direction:column; gap:6px;">
+        <label style="font-size:0.9rem; font-weight:600; color:#6B6560;">Ваше имя</label>
+        <input type="text" id="book-name" required placeholder="Как к вам обращаться?" style="width:100%; padding:12px 16px; border:1px solid #EDE6DC; border-radius:12px; font-family:inherit; font-size:1rem; background:#FAF7F2; color:#2B2B2B; outline:none;">
       </div>
-      <div class="form-group">
-        <label>Услуга</label>
-        <select id="book-service" required>
+      <div style="display:flex; flex-direction:column; gap:6px;">
+        <label style="font-size:0.9rem; font-weight:600; color:#6B6560;">Услуга</label>
+        <select id="book-service" required style="width:100%; padding:12px 16px; border:1px solid #EDE6DC; border-radius:12px; font-family:inherit; font-size:1rem; background:#FAF7F2; color:#2B2B2B; outline:none;">
           <option value="">-- Выберите услугу --</option>
           ${servicesOptions}
         </select>
       </div>
-      <div class="form-group">
-        <label>Мастер</label>
-        <select id="book-master" required>
+      <div style="display:flex; flex-direction:column; gap:6px;">
+        <label style="font-size:0.9rem; font-weight:600; color:#6B6560;">Мастер</label>
+        <select id="book-master" required style="width:100%; padding:12px 16px; border:1px solid #EDE6DC; border-radius:12px; font-family:inherit; font-size:1rem; background:#FAF7F2; color:#2B2B2B; outline:none;">
           <option value="">-- Выберите мастера --</option>
           ${mastersOptions}
         </select>
       </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Дата</label>
-          <input type="date" id="book-date" required>
+      <div style="display:flex; gap:12px;">
+        <div style="display:flex; flex-direction:column; gap:6px; flex:1;">
+          <label style="font-size:0.9rem; font-weight:600; color:#6B6560;">Дата</label>
+          <input type="date" id="book-date" required style="width:100%; padding:12px 16px; border:1px solid #EDE6DC; border-radius:12px; font-family:inherit; font-size:1rem; background:#FAF7F2; color:#2B2B2B; outline:none;">
         </div>
-        <div class="form-group">
-          <label>Время</label>
-          <input type="time" id="book-time" required>
+        <div style="display:flex; flex-direction:column; gap:6px; flex:1;">
+          <label style="font-size:0.9rem; font-weight:600; color:#6B6560;">Время</label>
+          <input type="time" id="book-time" required style="width:100%; padding:12px 16px; border:1px solid #EDE6DC; border-radius:12px; font-family:inherit; font-size:1rem; background:#FAF7F2; color:#2B2B2B; outline:none;">
         </div>
       </div>
       <button type="submit" class="btn btn--primary btn--full" style="margin-top: 10px;">Отправить в Telegram</button>
@@ -160,27 +178,26 @@ function renderBookingForm() {
   `;
 
   const form = document.getElementById("booking-form");
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = document.getElementById("book-name").value;
-    const service = document.getElementById("book-service").value;
-    const master = document.getElementById("book-master").value;
-    const date = document.getElementById("book-date").value;
-    const time = document.getElementById("book-time").value;
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("book-name").value;
+      const service = document.getElementById("book-service").value;
+      const master = document.getElementById("book-master").value;
+      const date = document.getElementById("book-date").value;
+      const time = document.getElementById("book-time").value;
 
-    // Формируем текст сообщения
-    const text = `Здравствуйте! Хочу записаться.%0A%0A👤 *Имя:* ${name}%0A✂️ *Услуга:* ${service}%0A💇‍♀️ *Мастер:* ${master}%0A📅 *Дата:* ${date}%0A⏰ *Время:* ${time}`;
-    
-    // Формируем ссылку (убираем лишние символы, если они есть)
-    const tgUser = CONFIG.telegram.replace("https://t.me/", "").replace("@", "");
-    const url = `https://t.me/${tgUser}?text=${text}`;
-    
-    window.open(url, "_blank");
-  });
+      const text = `Здравствуйте! Хочу записаться.%0A%0A👤 *Имя:* ${name}%0A✂️ *Услуга:* ${service}%0A💇‍♀️ *Мастер:* ${master}%0A📅 *Дата:* ${date}%0A⏰ *Время:* ${time}`;
+      const tgUser = CONFIG.telegram.replace("https://t.me/", "").replace("@", "");
+      const url = `https://t.me/${tgUser}?text=${text}`;
+      
+      window.open(url, "_blank");
+    });
+  }
 }
 
 function renderAdvantages() {
-  const grid = document.getElementById('advantages-grid');
+  const grid = getOrCreateContainer("Почему нас выбирают", "div", "advantages-grid");
   if (!grid) return;
   grid.innerHTML = CONFIG.advantages.map(a => `
     <div class="advantage-item">
@@ -191,7 +208,7 @@ function renderAdvantages() {
 }
 
 function renderReviews() {
-  const grid = document.getElementById('reviews-grid');
+  const grid = getOrCreateContainer("Отзывы гостей", "div", "reviews-grid");
   if (!grid) return;
   grid.innerHTML = CONFIG.reviews.map(r => `
     <article class="review-card">
