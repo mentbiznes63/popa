@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eychanka-v20';
+const CACHE_NAME = 'eychanka-v21';
 const ASSETS = [
   './',
   './index.html',
