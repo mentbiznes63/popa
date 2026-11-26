@@ -1,0 +1,25 @@
+{
+  "name": "Ейчанка — парикмахерская на Красной",
+  "short_name": "Ейчанка",
+  "description": "Парикмахерская «Ейчанка» на Красной в Ейске. Стрижки, окрашивание, укладки. Запись онлайн.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FAF7F2",
+  "theme_color": "#C9A27E",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

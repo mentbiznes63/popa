@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Парикмахерская Ейчанка на Красной — Ейск | Стрижки, окрашивание</title>
+  <meta name="description" content="Парикмахерская «Ейчанка» на Красной в Ейске. Профессиональные мастера, уютная атмосфера, чай и кофе. Стрижки, окрашивание, укладки. Рейтинг 4,6 ★. Ежедневно 09:00–19:00.">
+  <meta name="keywords" content="парикмахерская Ейск, Ейчанка, стрижка Ейск, окрашивание волос Ейск, салон красоты Красная">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Парикмахерская «Ейчанка» на Красной — Ейск">
+  <meta property="og:description" content="Профессиональные мастера, уютная атмосфера и чашка кофе. Рейтинг 4,6 ★. Запишитесь онлайн или по телефону.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200">
+  
+  <!-- Theme & PWA -->
+  <meta name="theme-color" content="#C9A27E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Ейчанка">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="logo" aria-label="Ейчанка на Красной">
+        <span class="logo__name" id="logo-name">Ейчанка</span>
+        <span class="logo__sub" id="logo-sub">на Красной</span>
+      </a>
+      
+      <div class="header__info">
+        <div class="header__hours" id="header-hours">Ежедневно 09:00–19:00</div>
+        <a href="tel:+79615225341" class="header__phone" id="header-phone">+7 (961) 522-53-41</a>
+      </div>
+      
+      <div class="header__actions">
+        <a href="tel:+79615225341" class="btn btn--outline btn--sm" id="btn-call-header">Позвонить</a>
+        <a href="#contacts" class="btn btn--primary btn--sm" id="btn-book-header">Записаться</a>
+      </div>
+      
+      <!-- Mobile menu toggle -->
+      <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    
+    <!-- Mobile menu -->
+    <nav class="mobile-menu" id="mobile-menu">
+      <a href="#services">Услуги</a>
+      <a href="#advantages">Почему мы</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contacts">Контакты</a>
+      <div class="mobile-menu__actions">
+        <a href="tel:+79615225341" class="btn btn--outline" id="btn-call-mobile">Позвонить</a>
+        <a href="#contacts" class="btn btn--primary" id="btn-book-mobile">Записаться</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero__bg" id="hero-bg"></div>
+      <div class="container hero__content">
+        <div class="hero__badge" id="hero-badge">
+          <span class="stars">★★★★★</span>
+          <span id="rating-text">4,6 ★ · 278 отзывов</span>
+        </div>
+        <h1 class="hero__title" id="hero-title">Парикмахерская «Ейчанка» — ваш салон красоты в Ейске</h1>
+        <p class="hero__subtitle" id="hero-subtitle">Профессиональные мастера, уютная атмосфера и чашка кофе. Рейтинг 4,6 ★ по 278 отзывам</p>
+        <div class="hero__cta">
+          <a href="#contacts" class="btn btn--primary btn--lg" id="btn-book-hero">Записаться</a>
+          <a href="tel:+79615225341" class="btn btn--outline btn--lg" id="btn-call-hero">Позвонить</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services" id="services">
+      <div class="container">
+        <h2 class="section__title">Услуги и цены</h2>
+        <p class="section__lead">Актуальные цены уточняйте при записи — зависят от длины и сложности</p>
+        <div class="services__grid" id="services-grid">
+          <!-- Cards rendered from CONFIG -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ADVANTAGES -->
+    <section class="section advantages" id="advantages">
+      <div class="container">
+        <h2 class="section__title">Почему нас выбирают</h2>
+        <div class="advantages__grid" id="advantages-grid">
+          <!-- Items from CONFIG -->
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="section reviews" id="reviews">
+      <div class="container">
+        <h2 class="section__title">Отзывы гостей</h2>
+        <p class="section__lead">Что говорят о нас в Google</p>
+        <div class="reviews__grid" id="reviews-grid">
+          <!-- Cards from CONFIG -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTS -->
+    <section class="section contacts" id="contacts">
+      <div class="container">
+        <h2 class="section__title">Контакты и запись</h2>
+        
+        <div class="contacts__wrapper">
+          <div class="contacts__info">
+            <div class="contact-card">
+              <div class="contact-card__icon">📍</div>
+              <div>
+                <h3>Адрес</h3>
+                <p id="contact-address">г. Ейск, ул. Красная, 55</p>
+              </div>
+            </div>
+            
+            <div class="contact-card">
+              <div class="contact-card__icon">📞</div>
+              <div>
+                <h3>Телефон</h3>
+                <a href="tel:+79615225341" id="contact-phone">+7 (961) 522-53-41</a>
+              </div>
+            </div>
+            
+            <div class="contact-card">
+              <div class="contact-card__icon">🕒</div>
+              <div>
+                <h3>Часы работы</h3>
+                <p id="contact-hours">Ежедневно 09:00–19:00</p>
+              </div>
+            </div>
+            
+            <div class="contact-card">
+              <div class="contact-card__icon">💬</div>
+              <div>
+                <h3>Запись онлайн</h3>
+                <div class="contact-links">
+                  <a href="#" class="btn btn--whatsapp btn--sm" id="btn-whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+                  <a href="#" class="btn btn--telegram btn--sm" id="btn-telegram" target="_blank" rel="noopener">Telegram</a>
+                  <a href="#" class="btn btn--outline btn--sm" id="btn-yclients" target="_blank" rel="noopener">Онлайн-запись</a>
+                </div>
+              </div>
+            </div>
+            
+            <a href="#" class="btn btn--primary btn--lg btn--full" id="btn-route" target="_blank" rel="noopener">
+              Построить маршрут
+            </a>
+          </div>
+          
+          <div class="contacts__map">
+            <iframe
+              id="map-iframe"
+              title="Карта парикмахерской Ейчанка"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.5!2d38.287!3d46.677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDYuNjc3LDM4LjI4Nw!5e0!3m2!1sru!2sru!4v1700000000000"
+              width="100%"
+              height="100%"
+              style="border:0; border-radius: 16px;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PWA INSTALL -->
+    <section class="section pwa-section" id="pwa">
+      <div class="container">
+        <div class="pwa-card">
+          <div class="pwa-card__icon">📱</div>
+          <div class="pwa-card__content">
+            <h3>Добавить на главный экран</h3>
+            <p>Сайт работает как приложение: быстрый доступ, офлайн-режим и удобные кнопки.</p>
+            <button class="btn btn--primary" id="btn-install">Добавить на главный экран</button>
+            <div class="pwa-instructions" id="pwa-instructions">
+              <p><strong>На iPhone:</strong> нажмите «Поделиться» → «На экран „Домой“»</p>
+              <p><strong>На Android:</strong> меню браузера → «Установить приложение» или «Добавить на главный экран»</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="logo__name">Ейчанка</span>
+        <span class="logo__sub">на Красной · Ейск</span>
+      </div>
+      <p class="footer__copy">© <span id="year"></span> Парикмахерская «Ейчанка». Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
