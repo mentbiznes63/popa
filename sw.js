@@ -1,5 +1,4 @@
-/* Service Worker — базовое кэширование для PWA */
-const CACHE_NAME = 'eychanka-v7';
+const CACHE_NAME = 'eychanka-v8';
 const ASSETS = [
   './',
   './index.html',
@@ -27,28 +26,21 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  // Только GET-запросы
   if (event.request.method !== 'GET') return;
-  
   event.respondWith(
-    caches.match(event.request)
-      .then(cached => {
-        if (cached) return cached;
-        return fetch(event.request)
-          .then(response => {
-            // Кэшируем только успешные ответы с нашего origin
-            if (response.ok && event.request.url.startsWith(self.location.origin)) {
-              const clone = response.clone();
-              caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-            }
-            return response;
-          })
-          .catch(() => {
-            // Офлайн: отдаём index.html для навигации
-            if (event.request.mode === 'navigate') {
-              return caches.match('./index.html');
-            }
-          });
+    fetch(event.request)
+      .then(response => {
+        if (response.ok && event.request.url.startsWith(self.location.origin)) {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+        }
+        return response;
+      })
+      .catch(() => {
+        return caches.match(event.request).then(cached => {
+          if (cached) return cached;
+          if (event.request.mode === 'navigate') return caches.match('./index.html');
+        });
       })
   );
 });
