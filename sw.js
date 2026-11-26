@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eychanka-v30'; // Не забудь поменять версию!
+const CACHE_NAME = 'eychanka-v31'; // Не забудь поменять версию!
 const ASSETS = [
   './',
   './index.html',
