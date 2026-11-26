@@ -9,7 +9,7 @@ const CONFIG = {
   address: "г. Ейск, ул. Красная, 55",
   phone: "+7 (961) 522-53-41",
   phoneTel: "+79615225341",
-  whatsapp: "https://wa.me/79615225341",
+  whatsapp: "",
   telegram: "https://t.me/fifengmwt",
   workHours: "Ежедневно 09:00–19:00",
   rating: "4,6",
